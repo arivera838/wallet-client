@@ -1,0 +1,73 @@
+org: afrivera
+app: wallet-service
+service: wallet-service
+frameworkVersion: "3"
+useDotenv: true
+package:
+  individually: true
+
+plugins:
+  - serverless-dotenv-plugin
+  - serverless-offline
+  - serverless-aws-documentation
+  - serverless-esbuild
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: ${env:REGION}
+  timeout: 15
+  stage: dev
+  environment:
+    STAGE: ${env:STAGE}
+
+
+functions:
+  registerClient:
+    handler: src/app/components/user/register-user.registerUser
+    events:
+    - http:
+        path: client/register
+        method: POST
+        cors: true
+
+  loadWalletClient:
+    handler: src/app/components/user/load-wallet.loadWallet
+    events:
+    - http:
+        path: wallet/load
+        method: POST
+        cors: true
+  
+  getWalletClient:
+    handler: src/app/components/user/get-wallet.getWallet
+    events:
+    - http:
+        path: wallet/get
+        method: POST
+        cors: true
+
+  payItemClient:
+    handler: src/app/components/user/pay-item.payItem
+    events:
+    - http:
+        path: wallet/pay
+        method: POST
+        cors: true
+  
+  payConfirmClient:
+    handler: src/app/components/user/pay-confirm.payConfirm
+    events:
+    - http:
+        path: wallet/pay/confirm
+        method: POST
+        cors: true
+
+custom:
+  serverless-offline:
+    httpPort: 9000
+  esbuild:
+    bundle: true
+    minify: false
+    exclude:
+      - "@aws-sdk/*"

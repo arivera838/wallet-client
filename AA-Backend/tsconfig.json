@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "emitDecoratorMetadata": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": true, /* Enables experimental support for ES7 decorators. */
+    "lib": ["ES2021"],
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "outDir": ".build",
+    "sourceMap": true,
+    "target": "ES2021",
+    "skipLibCheck": true,
+    "baseUrl": "/",
+    "strictPropertyInitialization": false
+  },
+  "include": ["./src/**/*"]
+}

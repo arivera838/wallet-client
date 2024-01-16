@@ -1,0 +1,9 @@
+{
+  "extends": "tslint-config-standard",
+  "exclude": [
+    "node_modules/**/*",
+    ".serverless/**/*",
+    ".webpack/**/*",
+    ".vscode/**/*"
+  ]
+}
