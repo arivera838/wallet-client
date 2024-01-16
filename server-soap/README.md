@@ -43,7 +43,7 @@ Para configurar las credenciales de AWS en tu máquina local y permitir el acces
 
 1. Abre una terminal o línea de comandos en tu máquina.
 
-2. Ejecuta el siguiente comando para configurar las credenciales. Reemplaza `AKIAQSSLSH3FFCGBNIHN` y `rLM0epozMdj4rPcl87XbQZa26ZQAvey0CqjVwjD7` con tus propias credenciales de AWS:
+2. Ejecuta el siguiente comando para configurar las credenciales. Reemplaza aws  AWS-ACCESS-KEY  y aws AWS-SECRET-KEY con tus propias credenciales de AWS:
 
    ```bash
    aws configure

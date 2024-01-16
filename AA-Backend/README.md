@@ -104,7 +104,7 @@ Para inicializar el proyecto desde cero en tu máquina, sigue estos pasos:
 2. Configura tus credenciales de AWS si aún no lo has hecho:
 
    ```bash
-   serverless config credentials --provider aws --key AKIAQSSLSH3FFCGBNIHN --secret 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
+   serverless config credentials --provider aws --key AWS-ACCESS-KEY --secret AWS-SECRET-KEY
    ```
 
 4. Utiliza el comando `serverless deploy` para desplegar la aplicación en tu cuenta de AWS.
