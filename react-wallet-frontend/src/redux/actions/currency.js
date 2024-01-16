@@ -24,7 +24,7 @@ export const receiveDeleteCurrency = ({ currency }) => ({
 export const addCurrency = (payload) => async (dispatch, getState) => {
   const payload_ = {
     currency: 'USD',
-    balance: parseInt(payload.amount + '')
+    balance: parseInt(`${payload.amount}`)
   }
   const { currencies } = getState();
   const { balance = 0, createdAt } =

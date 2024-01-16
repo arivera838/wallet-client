@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 // API Endpoints
-export const API_BASE_URL = 'http://localhost:9000/dev';
+export const API_BASE_URL = 'https://dokcmmcz9j.execute-api.us-east-1.amazonaws.com/dev';
 export const NEW_ClIENT_ENDPOINT = '/client/register';
 export const WALLET_LOAD_ENDPOINT = '/wallet/load';
 export const WALLET_PAY_ENDPOINT = '/wallet/pay';
