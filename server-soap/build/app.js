@@ -22,6 +22,15 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
@@ -29,51 +38,45 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const soap = __importStar(require("soap"));
 const fs = __importStar(require("fs"));
+require('dotenv').config();
+const registerUser_1 = __importDefault(require("./components/user/registerUser"));
+const loadWallet_1 = __importDefault(require("./components/user/loadWallet"));
+const payItem_1 = __importDefault(require("./components/user/payItem"));
+const payConfirm_1 = __importDefault(require("./components/user/payConfirm"));
+const getWallet_1 = __importDefault(require("./components/user/getWallet"));
+/* import { SharedIniFileCredentials, Config } from 'aws-sdk';
+
+const awsConfig = new Config({
+  credentials: new SharedIniFileCredentials({ profile: 'your-profile-name' }),
+  region: 'us-east-1', // Replace with your desired AWS region
+});
+ */
 // Define the content of the SOAP service
 const service = {
     WalletService: {
         WalletPort: {
-            RegistroCliente: (args, callback) => {
-                const { Documento, Nombres, Email, Celular } = args;
-                // Validate required parameters
-                if (!Documento || !Nombres || !Email || !Celular) {
-                    return callback({ statusCode: 404, message: 'Missing required parameters' });
-                }
-                const resultado = 'Cliente registrado exitosamente';
-                // Call the callback with null to indicate no errors and provide the result
-                callback(null, { Resultado: resultado });
-            },
-            CargaDinero: (args) => {
-                // Implement the logic for the CargaDinero operation here
-                // args.Documento, args.Monto contain the input data
-                // Return the result as an object matching the response message structure
-                return {
-                    Resultado: 'Dinero cargado exitosamente',
-                };
-            },
-            Compra: (args) => {
-                // Implement the logic for the Compra operation here
-                // args.Documento, args.CodigoConfirmacion contain the input data
-                // Return the result as an object matching the response message structure
-                return {
-                    Resultado: 'Compra realizada exitosamente',
-                };
-            },
-            ConsultaSaldo: (args) => {
-                // Implement the logic for the ConsultaSaldo operation here
-                // args.Documento contains the input data
-                // Return the balance as an object matching the response message structure
-                return {
-                    Saldo: 100.0, // Suppose the balance is $100.0
-                };
-            },
+            RegistroCliente: (args, callback) => __awaiter(void 0, void 0, void 0, function* () {
+                yield (0, registerUser_1.default)(args, callback);
+            }),
+            CargaDinero: (args, callback) => __awaiter(void 0, void 0, void 0, function* () {
+                yield (0, loadWallet_1.default)(args, callback);
+            }),
+            Pagar: (args, callback) => __awaiter(void 0, void 0, void 0, function* () {
+                yield (0, payItem_1.default)(args, callback);
+            }),
+            ConfirmarPago: (args, callback) => __awaiter(void 0, void 0, void 0, function* () {
+                yield (0, payConfirm_1.default)(args, callback);
+            }),
+            ConsultaSaldo: (args, callback) => __awaiter(void 0, void 0, void 0, function* () {
+                yield (0, getWallet_1.default)(args, callback);
+            }),
         },
     },
 };
 // Create an instance of Express and a SOAP server
 const app = (0, express_1.default)();
 const xml = fs.readFileSync('WalletService.wsdl', 'utf8');
-const server = app.listen(3000, function () {
+app.listen(3000, function () {
     console.log(`SOAP server listening at `);
 });
 // Publish the SOAP service at /wallet
