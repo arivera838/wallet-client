@@ -2,12 +2,12 @@
 <definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
              xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
              xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-             xmlns:tns="http://18.206.51.111:3000/wallet"
-             targetNamespace="http://18.206.51.111:3000/wallet">
+             xmlns:tns="https://18.206.51.111:3000/wallet"
+             targetNamespace="https://18.206.51.111:3000/wallet">
 
     <!-- Tipos de datos utilizados en las operaciones -->
     <types>
-        <xsd:schema targetNamespace="http://18.206.51.111:3000/wallet">
+        <xsd:schema targetNamespace="https://18.206.51.111:3000/wallet">
             <xsd:element name="document" type="xsd:string"/>
             <xsd:element name="fullName" type="xsd:string"/>
             <xsd:element name="email" type="xsd:string"/>
@@ -100,7 +100,7 @@
     <binding name="WalletSoapBinding" type="tns:WalletService">
         <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
         <operation name="RegistroCliente">
-            <soap:operation soapAction="http://18.206.51.111:3000/wallet/RegistroCliente"/>
+            <soap:operation soapAction="https://18.206.51.111:3000/wallet/RegistroCliente"/>
             <input>
                 <soap:body use="literal"/>
             </input>
@@ -109,7 +109,7 @@
             </output>
         </operation>
         <operation name="CargaDinero">
-            <soap:operation soapAction="http://18.206.51.111:3000/wallet/CargaDinero"/>
+            <soap:operation soapAction="https://18.206.51.111:3000/wallet/CargaDinero"/>
             <input>
                 <soap:body use="literal"/>
             </input>
@@ -118,7 +118,7 @@
             </output>
         </operation>
         <operation name="Pagar">
-            <soap:operation soapAction="http://18.206.51.111:3000/wallet/Pagar"/>
+            <soap:operation soapAction="https://18.206.51.111:3000/wallet/Pagar"/>
             <input>
                 <soap:body use="literal"/>
             </input>
@@ -127,7 +127,7 @@
             </output>
         </operation>
         <operation name="ConsultaSaldo">
-            <soap:operation soapAction="http://18.206.51.111:3000/wallet/ConsultaSaldo"/>
+            <soap:operation soapAction="https://18.206.51.111:3000/wallet/ConsultaSaldo"/>
             <input>
                 <soap:body use="literal"/>
             </input>
@@ -140,7 +140,7 @@
     <!-- Servicio -->
     <service name="WalletService">
         <port name="WalletPort" binding="tns:WalletSoapBinding">
-            <soap:address location="http://18.206.51.111:3000/wallet"/>
+            <soap:address location="https://18.206.51.111:3000/wallet"/>
         </port>
     </service>
 
