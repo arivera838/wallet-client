@@ -1,6 +1,6 @@
 import { createClientAsync, Client } from 'soap';
 
-const soapServiceUrl = 'http://localhost:3000/wallet?wsdl';
+const soapServiceUrl = process.env.SOAP_SERVICE_URL;
 
 const options = {};
 

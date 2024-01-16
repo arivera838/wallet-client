@@ -41048,7 +41048,7 @@ ResponseHelper.response = (props) => {
 
 // src/app/services/connnectSoap.ts
 var import_soap = __toESM(require_soap2());
-var soapServiceUrl = "http://localhost:3000/wallet?wsdl";
+var soapServiceUrl = process.env.SOAP_SERVICE_URL;
 var createSoapClient = () => {
   return (0, import_soap.createClientAsync)(soapServiceUrl);
 };
