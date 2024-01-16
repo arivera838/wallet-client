@@ -29,6 +29,8 @@ const payConfirm = (itemWallet, callback) => __awaiter(void 0, void 0, void 0, f
             throw validatorError;
         }
         const payWallet = yield (0, getPayWallet_1.default)(itemWallet);
+        if (!payWallet)
+            throw status_errors_constant_1.STATUS_ERROR.CODE_ERROR;
         if (payWallet.status === status_pay_1.STATUS_PAY.APPROVED) {
             throw status_errors_constant_1.STATUS_ERROR.PAY_SUCCESS;
         }

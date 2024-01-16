@@ -83,11 +83,12 @@ function Summary({ total, currencies, onUpdateBalance, onDeposit, onReset }) {
 
   const handleAddClient = async (parameters) => {
     try {
-      await post(NEW_ClIENT_ENDPOINT, parameters)
+      const response = await post(NEW_ClIENT_ENDPOINT, parameters)
 
       if(!!error) 
         throw error;
 
+      setDataClient(response)
       setAlertMessage('Success new client created');
       setTimeout(() => {
         setAlertMessage('');
@@ -95,27 +96,32 @@ function Summary({ total, currencies, onUpdateBalance, onDeposit, onReset }) {
       }, 1000)
     } catch (error) {
       setAlertMessage(error.response.data);
+      setTimeout(() => {
+        setAlertMessage('')
+      }, 3000)
     }
   }
 
   const handleGetWallet = async (parameters) => {
     try {
-      await post(WALLET_GET_ENDPOINT, parameters)
+      const response = await post(WALLET_GET_ENDPOINT, parameters)
 
       if(!!error) 
         throw error;
 
       onReset()
-      setTimeout(() => {
-        onDeposit(data)
-      }, 1000)
-      setDataClient(data)
+      onDeposit(response)
+      setDataClient(response)
 
       setTimeout(() => {
         setOpenGet(false)
       }, 1000)
     } catch (error) {
+      console.log("🚀 ~ handleGetWal ~ error:", error)
       setAlertMessage(error.response.data);
+      setTimeout(() => {
+        setAlertMessage('')
+      }, 3000)
     }
   }
 

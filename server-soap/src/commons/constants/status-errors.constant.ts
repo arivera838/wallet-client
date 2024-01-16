@@ -3,6 +3,7 @@ export const STATUS_ERROR = {
     CLIENT_NOT_EXIST: { statusCode: 404, message: 'Client  does not exist' },
     WALLET_NOT: { statusCode: 404, message: 'Client has not a wallet' },
     AMOUNT_NOT: { statusCode: 400, message: "Client  has no balance" },
-    PAY_SUCCESS: { statusCode: 400, message: "Payment made" }
+    PAY_SUCCESS: { statusCode: 400, message: "Payment made" },
+    CODE_ERROR: { statusCode: 400, message: "Your session id and your code do not match " }
 };
 

@@ -21,6 +21,9 @@ const payConfirm = async (itemWallet: Partial<IPayWalleConfirm>, callback: any) 
 
         const payWallet: IPayWalleConfirm = await getPayWallet(itemWallet)
 
+        if(!payWallet) 
+            throw STATUS_ERROR.CODE_ERROR
+
         if(payWallet.status === STATUS_PAY.APPROVED) {
             throw STATUS_ERROR.PAY_SUCCESS
         }

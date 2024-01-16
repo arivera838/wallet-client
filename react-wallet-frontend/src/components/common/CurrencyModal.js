@@ -125,6 +125,7 @@ function CurrencyModal({
       setFormData({
         code: '',
       })
+      setSessionId('')
     }
   }, [open])
 
