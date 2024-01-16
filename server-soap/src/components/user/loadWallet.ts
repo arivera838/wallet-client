@@ -1,11 +1,13 @@
 'use strict'
 
 import { IWallet } from '../../commons/Interfaces/IWallet';
+import { ICLient } from '../../commons/Interfaces/IClient';
 import { responseFault } from '../../commons/helpers/responseFault';
 import sumAmount from '../../commons/helpers/sumAmount';
-import { validateLoadWallet } from '../../commons/helpers/validators';
+import { validateClientExist, validateLoadWallet } from '../../commons/helpers/validators';
 import getWalletRepository from '../../repository/getWallet';
 import loadWalletRepository from '../../repository/loadWallet';
+import getClient from '../../repository/getClient';
 
 const loadWallet = async (itemWallet: IWallet, callback: any) => {
     try {
@@ -13,6 +15,14 @@ const loadWallet = async (itemWallet: IWallet, callback: any) => {
 
         if(!!validatorError){
             throw validatorError
+        }
+
+        const client: ICLient = await getClient({ document: itemWallet.document })
+
+        const validatorClientError = validateClientExist(client)
+
+        if(!!validatorClientError){
+            throw validatorClientError
         }
 
         const wallet = await getWalletRepository(itemWallet)

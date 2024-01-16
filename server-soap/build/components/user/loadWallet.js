@@ -17,11 +17,17 @@ const sumAmount_1 = __importDefault(require("../../commons/helpers/sumAmount"));
 const validators_1 = require("../../commons/helpers/validators");
 const getWallet_1 = __importDefault(require("../../repository/getWallet"));
 const loadWallet_1 = __importDefault(require("../../repository/loadWallet"));
+const getClient_1 = __importDefault(require("../../repository/getClient"));
 const loadWallet = (itemWallet, callback) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const validatorError = (0, validators_1.validateLoadWallet)(itemWallet);
         if (!!validatorError) {
             throw validatorError;
+        }
+        const client = yield (0, getClient_1.default)({ document: itemWallet.document });
+        const validatorClientError = (0, validators_1.validateClientExist)(client);
+        if (!!validatorClientError) {
+            throw validatorClientError;
         }
         const wallet = yield (0, getWallet_1.default)(itemWallet);
         if (!!wallet) {
