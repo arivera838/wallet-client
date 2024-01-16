@@ -1,6 +1,6 @@
-# README - Aplicación Serverless con Node.js en AWS
+Aplicación Serverless con Node.js en AWS
 
-Este README tiene como objetivo proporcionar una guía detallada sobre cómo desarrollar una aplicación serverless utilizando Node.js en AWS. La aplicación actúa como intermediario entre un servidor SOAP existente y un API REST para la comunicación entre el frontend y la base de datos. Cubriremos la estructura del proyecto, cómo crear las APIs y cómo inicializar el proyecto desde cero utilizando Serverless Framework.
+Aplicación serverless utilizando Node.js en AWS. La aplicación actúa como intermediario entre un servidor SOAP existente y un API REST para la comunicación entre el frontend y la base de datos. Cubriremos la estructura del proyecto, cómo crear las APIs y cómo inicializar el proyecto desde cero utilizando Serverless Framework.
 
 ## Estructura del Proyecto
 

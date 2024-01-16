@@ -1,4 +1,4 @@
-# README - Creación de un servidor SOAP con Express y Node.js usando TypeScript, conexión con AWS DynamoDB y envío de correos electrónicos con AWS SES
+Creación de un servidor SOAP con Express y Node.js usando TypeScript, conexión con AWS DynamoDB y envío de correos electrónicos con AWS SES
 
 Este repositorio contiene un proyecto de servidor SOAP desarrollado en Node.js utilizando Express y TypeScript. Además, se integra con los servicios de AWS DynamoDB para la gestión de la base de datos y AWS SES para el envío de correos electrónicos.
 
